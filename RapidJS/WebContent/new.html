@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Rapid Application Factory</title>
+
+<style type="text/css">
+
+	html, body {
+		margin: 0px;
+		padding: 0px;
+		height: 100%;
+		width: 100%;
+		font-size: 13px;
+	}
+
+	li a {
+		outline-color: transparent;
+	}
+
+	.FactoryMainDiv {
+		display: block;
+		border: solid 4px #282828;
+		border-top: none;
+	}
+	
+	#CrudAreaDiv {
+		background: #282828;
+	}
+	
+	.rapidjs-factory-clearfix::before, .rapidjs-factory-clearfix::after {
+		content: "";
+		display: table;
+	}
+	
+	.rapidjs-factory-clearfix:after {
+	    clear: both;
+	}
+	
+	.rapidjs-factory-reset {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		outline: 0;
+		line-height: 1.3;
+		text-decoration: none;
+		font-size: 95%;
+		list-style: none;
+	}
+	
+	.rapidjs-factory-widget {
+		font-family: Verdana,Arial,sans-serif;
+	}
+	
+	.rapidjs-factory-widget-header {
+		border: 1px solid #404040;
+		background: #888 url(resource/factory/images/rapidjs-bg_highlight.png) 50% 50% repeat-x;
+		color: #fff;
+		font-weight: bold;
+	}
+	
+	.rapidjs-factory-widget-content {
+		border: 1px solid #404040;
+		padding: 1em 1.4em;
+		color: #eee;
+	}
+	
+	.rapidjs-factory-tabs, .rapidjs-factory-tabs-nav {
+		margin: 0;
+		padding: .2em .2em 0;
+	}
+	
+	.rapidjs-factory-tabs-bottom {
+		clear: left;
+		padding: 0 .2em .2em .2em;
+	}
+	
+	.rapidjs-factory-tabs li {
+		list-style: none;
+		float: left;
+		position: relative;
+		top: 0;
+		margin: 1px .2em 0 0;
+		border-bottom: 0;
+		padding: 0;
+		white-space: nowrap;
+	}
+
+	.rapidjs-factory-tabs li a {
+		float: left;
+		padding: .5em 1em;
+		text-decoration: none;
+		cursor: pointer;
+		cursor: hand;
+		color: #fff;
+		text-decoration: none;
+	}	
+	
+	.rapidjs-factory-tabs li.ui-tabs-active {
+		margin-bottom: -1px;
+		padding-bottom: 1px;
+	}
+	
+	.rapidjs-factory-state-default {
+		border: 1px solid #ccc;
+		background: #adadad url(resource/factory/images/rapidjs-factory-state-default.png) 50% 50% repeat-x;
+		font-weight: normal;
+		color: #333;
+	}
+	
+	.rapidjs-factory-state-default a {
+		color: #333 !important;
+	}
+	
+	.rapidjs-factory-state-active {
+		border: 1px solid #000;
+		background: #121212 url(resource/factory/images/rapidjs-bg-active.png) 50% 50% repeat-x;
+		font-weight: normal;
+		color: #fff;		
+	}
+		
+	.rapidjs-factory-state-active a, .rapidjs-factory-state-active a:link, .rapidjs-factory-state-active a:visited {
+		color: #fff !important;
+		text-decoration: none;
+	}	
+	
+	.rapidjs-tabs-panel {
+		display: block;
+		border-width: 0;
+		padding: 1em 1.4em;
+		background: none;
+	}
+	
+	.rapidjs-factory-toolbar {
+		padding: .5em;
+		margin: 0;
+	}
+	
+	.rapidjs-factory-button {
+		padding: 2px;
+		margin-right: 2px;
+		float: left;
+		font-size: 1em;
+		border: 1px solid #ccc;
+		background: #adadad url(resource/factory/images/rapidjs-toolbar-btn-bg.png) 50% 50% repeat-x;
+		font-weight: normal;
+		color: #333;
+	}
+	
+	.rapidjs-factory-button span {
+		width: 16px;
+		height: 16px;
+		display: block;
+		text-indent: -99999px;
+		overflow: hidden;
+		background-repeat: no-repeat;
+		background-image: url(resource/factory/images/rapidjs-sprite.png);
+	}
+	
+	.rapidjs-factory-icon-new {
+		background-position: -71px -19px;
+	}
+	
+	.rapidjs-factory-icon-save {
+		background-position: -124px 0px;
+	}	
+	
+	.rapidjs-factory-icon-cancel {
+		background-position: -124px -71px;
+	}
+	
+	.rapidjs-factory-icon-delete {
+		background-position: -160px -18px;
+	}
+	
+	.rapidjs-factory-icon-reload {
+		background-position: -266px 0px;
+	}
+	
+	.rapidjs-factory-icon-export {
+		background-position: -89px -53px;
+	}
+	
+	.rapidjs-factory-icon-toggle {
+		background-position: -36px 0px;
+	}
+	
+	.rapidjs-factory-icon-print {			
+		background-position: -230px -1px;
+	}
+	
+</style>
+
+</head>
+
+<body>
+<div id="FactoryMainDiv" class="FactoryMainDiv" style="display: block;">
+	<div id="CrudAreaDiv" class="CrudAreaDiv rapidjs-factory-tabs rapidjs-factory-widget rapidjs-factory-widget-content">
+		<ul class="rapidjs-factory-tabs-nav rapidjs-factory-reset rapidjs-factory-clearfix rapidjs-factory-widget rapidjs-factory-widget-header" role="tablist">
+			<li metaname="RJ_APPLICATION" class="rapidjs-factory-state-default rapidjs-factory-tabs-active rapidjs-factory-state-active"><a href="#RJ_APPLICATION" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">APPLICATION</a></li>
+			<li metaname="RJ_DATASOURCE" class="rapidjs-factory-state-default"><a href="#RJ_DATASOURCE" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">DATASOURCE</a></li>
+			<li metaname="RJ_WINDOW" class="rapidjs-factory-state-default"><a href="#RJ_WINDOW" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">WINDOW</a></li>
+			<li metaname="RJ_CONTAINER" class="rapidjs-factory-state-default"><a href="#RJ_CONTAINER" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">CONTAINER</a></li>
+			<li metaname="RJ_LAYOUT" class="rapidjs-factory-state-default"><a href="#RJ_LAYOUT" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5">LAYOUT</a></li>
+			<li metaname="RJ_TOOLBAR" class="rapidjs-factory-state-default"><a href="#RJ_TOOLBAR" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-6">TOOLBAR</a></li>
+			<li metaname="RJ_TOOLITEM" class="rapidjs-factory-state-default"><a href="#RJ_TOOLITEM" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-7">TOOLITEM</a></li>
+			<li metaname="RJ_VIEW" class="rapidjs-factory-state-default"><a href="#RJ_VIEW" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-8">VIEW</a></li>
+			<li metaname="RJ_CONTROL" class="rapidjs-factory-state-default"><a href="#RJ_CONTROL" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-9">CONTROL</a></li>
+			<li style="float:right;margin-top: 5px;cursor: pointer;cursor: hand;" onclick="ShowHideTopBar();"><span id="SlideToggle" class="ui-icon ui-icon-triangle-1-n ui-icon-triangle-1-s" style="display:inline-block;"></span></li>
+		</ul>
+		
+		<div id="RJ_APPLICATION" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content">
+			<div class="rapidjs-factory-toolbar rapidjs-factory-widget-header rapid-factory-clearfix">
+				<div class="rapidjs-factory-buttonset rapidjs-factory-clearfix">
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Open">
+						<span class="rapidjs-factory-icon-new"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Save">
+						<span class="rapidjs-factory-icon-save"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Cancel">
+						<span class="rapidjs-factory-icon-cancel"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Delete">
+						<span class="rapidjs-factory-icon-delete"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Reload">
+						<span class="rapidjs-factory-icon-reload"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Export">
+						<span class="rapidjs-factory-icon-export"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Print">
+						<span class="rapidjs-factory-icon-print"></span>
+					</a>
+					<a href="#" class="rapidjs-factory-button rapidjs-factory-state-default" title="Toggle">
+						<span class="rapidjs-factory-icon-toggle"></span>
+					</a>
+				</div>
+			</div>
+			
+			<div id="subTab" class="tabs-bottom ui-tabs ui-widget ui-widget-content ui-corner-all">
+				<div class="tabs-spacer"></div>
+				<div id="Element" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+					tabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-nav
+				</div>
+				<div id="Data" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+					tabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-nav
+				</div>
+				<div id="Action" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+					tabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-nav
+				</div>
+				<div id="Style" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+					tabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-nav
+				</div>
+				<div id="Device" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+					tabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-nav
+				</div>
+				
+				<ul class="rapidjs-factory-tabs-bottom rapidjs-factory-reset rapidjs-factory-clearfix rapidjs-factory-widget-header">
+					<li metaname="Element" maintab="RJ_APPLICATION" class="rapidjs-factory-state-default rapidjs-factory-tabs-active rapidjs-factory-state-active">
+						<a href="#Element" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-20">Element</a>
+					</li>
+					<li metaname="Data" maintab="RJ_APPLICATION" class="rapidjs-factory-state-default">
+						<a href="#Data" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-21">Data</a>
+					</li>
+					<li metaname="Action" maintab="RJ_APPLICATION" class="rapidjs-factory-state-default">
+						<a href="#Action" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-22">Action</a>
+					</li>
+					<li metaname="Style" maintab="RJ_APPLICATION" class="rapidjs-factory-state-default">
+						<a href="#Style" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-23">Style</a>
+					</li>
+					<li metaname="Device" maintab="RJ_APPLICATION" class="rapidjs-factory-state-default">
+						<a href="#Device" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-24">Device</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
