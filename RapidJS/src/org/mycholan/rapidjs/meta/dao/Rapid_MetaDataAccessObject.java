@@ -7,13 +7,13 @@ import org.mycholan.rapidjs.model.Rapid_ApplicationMetaData;
 import org.mycholan.rapidjs.model.Rapid_FactoryMetaData;
 import org.mycholan.rapidjs.session.RapidContext;
 
-public class Rapid_MetaHandler {
+public class Rapid_MetaDataAccessObject {
 	private RapidContext rContext = null;
 	Rapid_FactoryMetaData FactoryMetaObj = null;
 	Rapid_ApplicationMetaData AppMetaData = null;
 	JSONArray jArray = null;
 	
-	public Rapid_MetaHandler(RapidContext rcontext) {
+	public Rapid_MetaDataAccessObject(RapidContext rcontext) {
 		rContext = rcontext;
 		FactoryMetaObj = Rapid_Initializer.LoadFactoryMeta();
 		AppMetaData = Rapid_Initializer.LoadApplicationMeta();

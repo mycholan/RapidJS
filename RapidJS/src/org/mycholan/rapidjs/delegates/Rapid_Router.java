@@ -2,7 +2,8 @@ package org.mycholan.rapidjs.delegates;
 
 import org.mycholan.rapidjs.factory.guards.Rapid_CredentialManager;
 import org.mycholan.rapidjs.factory.guards.Rapid_StarterApp;
-import org.mycholan.rapidjs.meta.handlers.Rapid_MetaAction;
+import org.mycholan.rapidjs.factory.handler.Rapid_FactoryActionHandler;
+import org.mycholan.rapidjs.meta.handlers.Rapid_MetaActionHandler;
 import org.mycholan.rapidjs.session.RapidContext;
 
 /**
@@ -23,7 +24,7 @@ public class Rapid_Router {
 		String responseStr = "";
 		Rapid_CredentialManager credentialManager = null;
 		Rapid_StarterApp starterApp = null;
-		Rapid_MetaAction metaAction = null;
+		Rapid_MetaActionHandler metaAction = null;
 
 		if (rContext.getRequestModel().getRjType().equals("RJS")) {
 			starterApp = new Rapid_StarterApp(rContext);
@@ -37,7 +38,7 @@ public class Rapid_Router {
 				responseStr = credentialManager.doLogout();
 			}
 		} else if (rContext.getRequestModel().getRjType().equals("META")) {
-			metaAction = new Rapid_MetaAction(rContext);
+			metaAction = new Rapid_MetaActionHandler(rContext);
 			if (rContext.getRequestModel().getAction().equals("GET")) {
 				System.out.println("ActionRouter, META, GET");
 				responseStr = metaAction.doMetaAction();
@@ -45,17 +46,8 @@ public class Rapid_Router {
 
 			}
 		} else if (rContext.getRequestModel().getRjType().equals("FACTORY")) {
-			if (rContext.getRequestModel().getAction().equals("GET")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("NEW")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("SAVE")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("DELETE")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("CHECK")) {
-
-			}
+			Rapid_FactoryActionHandler factoryActionHandler = new Rapid_FactoryActionHandler(rContext);
+			responseStr = factoryActionHandler.doAction();
 		} else if (rContext.getRequestModel().getRjType().equals("APP")) {
 			if (rContext.getRequestModel().getAction().equals("NEW")) {
 

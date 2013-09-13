@@ -1,17 +1,17 @@
 package org.mycholan.rapidjs.meta.handlers;
 
-import org.mycholan.rapidjs.meta.dao.Rapid_MetaHandler;
+import org.mycholan.rapidjs.meta.dao.Rapid_MetaDataAccessObject;
 import org.mycholan.rapidjs.session.RapidContext;
 
-public class Rapid_MetaAction {
+public class Rapid_MetaActionHandler {
 	private RapidContext rContext = null;
 	
-	public Rapid_MetaAction(RapidContext rcontext) {
+	public Rapid_MetaActionHandler(RapidContext rcontext) {
 		rContext = rcontext;
 	}
 	
 	public String doMetaAction() {
-		Rapid_MetaHandler metaHandler = new Rapid_MetaHandler(rContext);	
+		Rapid_MetaDataAccessObject metaHandler = new Rapid_MetaDataAccessObject(rContext);	
 		System.out.println("ActionRouter, Rapid_MetaAction handler");
 		return metaHandler.doGetMetaData();
 	}
