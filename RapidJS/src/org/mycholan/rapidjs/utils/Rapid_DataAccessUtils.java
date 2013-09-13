@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.mycholan.rapidjs.model.Rapid_ApplicationMetaData;
 import org.mycholan.rapidjs.model.Rapid_FactoryMetaData;
+import org.mycholan.rapidjs.session.RapidContext;
 
 /**
  * 
@@ -296,5 +297,10 @@ public class Rapid_DataAccessUtils {
 		query += ")";
 		log.info("Constructed Create Table Satement  =  " + query);
 		return query;
+	}
+	
+	public ArrayList<Properties> GetKeyValueMap(RapidContext rcontext) {
+		
+		return null;
 	}
 }

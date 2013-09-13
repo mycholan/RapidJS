@@ -1,5 +1,6 @@
 package org.mycholan.rapidjs.delegates;
 
+import org.mycholan.rapidjs.application.handler.Rapid_ApplicationActionHandler;
 import org.mycholan.rapidjs.factory.guards.Rapid_CredentialManager;
 import org.mycholan.rapidjs.factory.guards.Rapid_StarterApp;
 import org.mycholan.rapidjs.factory.handler.Rapid_FactoryActionHandler;
@@ -22,13 +23,10 @@ public class Rapid_Router {
 
 	public String ActionRouter() {
 		String responseStr = "";
-		Rapid_CredentialManager credentialManager = null;
-		Rapid_StarterApp starterApp = null;
-		Rapid_MetaActionHandler metaAction = null;
-
+		
 		if (rContext.getRequestModel().getRjType().equals("RJS")) {
-			starterApp = new Rapid_StarterApp(rContext);
-			credentialManager = new Rapid_CredentialManager(rContext);
+			Rapid_StarterApp starterApp = new Rapid_StarterApp(rContext);
+			Rapid_CredentialManager credentialManager = new Rapid_CredentialManager(rContext);
 
 			if (rContext.getRequestModel().getAction().equals("INIT")) {
 				responseStr = starterApp.StartAdmin();
@@ -38,7 +36,7 @@ public class Rapid_Router {
 				responseStr = credentialManager.doLogout();
 			}
 		} else if (rContext.getRequestModel().getRjType().equals("META")) {
-			metaAction = new Rapid_MetaActionHandler(rContext);
+			Rapid_MetaActionHandler metaAction = new Rapid_MetaActionHandler(rContext);
 			if (rContext.getRequestModel().getAction().equals("GET")) {
 				System.out.println("ActionRouter, META, GET");
 				responseStr = metaAction.doMetaAction();
@@ -49,17 +47,8 @@ public class Rapid_Router {
 			Rapid_FactoryActionHandler factoryActionHandler = new Rapid_FactoryActionHandler(rContext);
 			responseStr = factoryActionHandler.doAction();
 		} else if (rContext.getRequestModel().getRjType().equals("APP")) {
-			if (rContext.getRequestModel().getAction().equals("NEW")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("SAVE")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("DELETE")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("GET")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("CHECK")) {
-
-			}
+			Rapid_ApplicationActionHandler appActionHandler = new Rapid_ApplicationActionHandler(rContext);
+			responseStr = appActionHandler.doAction();
 		}
 
 		return responseStr;
