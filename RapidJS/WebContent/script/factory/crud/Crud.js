@@ -44,6 +44,18 @@ var RapidCrud = function(){
 		this.TabHandler.InitMainTabBar(this.BaseTab, $("#CrudAreaDiv"));
 	};
 	
+	this.MainTabItemClickHandler = function(liElm) {		
+		if(liElm.index() == 0) {
+			RequestObject = new CreateRequestObject("FACTORY", "GET", "APP_LIST", "NO", 0, 0, "", "", [], [], [], []);
+			Communicator(function(){
+				
+			});
+		}else {
+			
+		}
+		this.TabHandler.InitSubTabBar($("#"+liElm.attr("metaname")));
+	};
+	
 	this.DisplaySubTab = function() {
 		if(ResponseObject == null){	
 			AlertObj.AlertUser("Factory Tab Meta Data", "something went wrong.!");
@@ -53,6 +65,10 @@ var RapidCrud = function(){
 		ResetView();
 		$("#FactoryMainDiv").show();
 		this.TabHandler.InitSubTabBar(ResponseObject);
+	};
+	
+	this.SubTabItemClickHandler = function() {
+		
 	};
 	
 	this.GetTabChildMetaData = function(maintab) {

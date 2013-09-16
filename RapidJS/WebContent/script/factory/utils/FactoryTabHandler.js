@@ -21,12 +21,10 @@ var FactoryTabHandler = function() {
 				});				
 				$("#"+$(this).attr("metaname")).show();
 				e.data.CurrentTab = $(this).attr("metaname");
-				e.data.InitSubTabBar($("#"+$(this).attr("metaname")));
+				FactoryObj.MainTabItemClickHandler($(this));				
 			});
 			TabDiv.append($('<div id="'+MainTabObj[i]+'" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
 		}	
-		
-		//ulElem.append($('<li style="float:right;margin-top: 5px;cursor: pointer;cursor: hand;" onclick="ShowHideTopBar();"><span id="SlideToggle" class="ui-icon ui-icon-triangle-1-n" style="display:inline-block;"></span></li>'));
 	};
 	
 	this.InitSubTabBar = function(pDiv) {

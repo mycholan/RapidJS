@@ -2,9 +2,9 @@
 var FactoryObj = null;
 /*Jquery UI Alert box object*/
 var AlertObj = null;
-
+/*Meta object which holds main tab item, used by FactoryTabHandler*/
 var BaseTab = null;
-
+/*Meta object which holds main sub tab item, used by FactoryTabHandler*/
 var SubTab = null;
 
 $(document).ready(function(){
@@ -38,24 +38,4 @@ function ShowHideTopBar() {
 function ResetView() {
 	$("#WelcomeDiv").hide();
 	$("#FactoryMainDiv").hide();	
-}
-
-function FetchMainTabMeta() {
-	
-}
-
-function FetchSubTabMeta() {
-	
-}
-
-function _MainTabCallBack() {
-	FactoryObj.DisplayMainTab();
-}
-
-function _SubTabCallBack() {
-	FactoryObj.DisplaySubTab();
-}
-
-function _TabContentCallBack() {
-	FactoryObj.DisplayTabChild();
 }
