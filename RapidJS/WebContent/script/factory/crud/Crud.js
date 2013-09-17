@@ -44,16 +44,18 @@ var RapidCrud = function(){
 		this.TabHandler.InitMainTabBar(this.BaseTab, $("#CrudAreaDiv"));
 	};
 	
-	this.MainTabItemClickHandler = function(liElm) {		
+	this.MainTabItemClickHandler = function(liElm) {	
 		if(liElm.index() == 0) {
 			RequestObject = new CreateRequestObject("FACTORY", "GET", "APP_LIST", "NO", 0, 0, "", "", [], [], [], []);
 			Communicator(function(){
+				FactoryGridObj.SetDataSource(ResponseObject);
+				FactoryGridObj.InitGrid($("#"+liElm.attr("metaname")+"-context-list-parent"));
 				
+				FactoryObj.TabHandler.InitSubTabBar($("#"+liElm.attr("metaname")+"-context-subtab-parent"));
 			});
 		}else {
-			
-		}
-		this.TabHandler.InitSubTabBar($("#"+liElm.attr("metaname")));
+			this.TabHandler.InitSubTabBar($("#"+liElm.attr("metaname")+"-context-subtab-parent"));
+		}		
 	};
 	
 	this.DisplaySubTab = function() {

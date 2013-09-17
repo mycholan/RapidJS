@@ -9,17 +9,17 @@
  *  }
  */
 
-var FactoryGrid = function(meta, keyIds){
+var FactoryGrid = function(){
 	/*Holds input object*/
-	this.MetaData = meta;
+	this.MetaData = null;
 	/*Holds filtered rows*/
-	this.Rows = meta.data;
+	this.Rows = null;
 	/*Used for rapidjs */
-	this.PrimaryIDs = keyIds;	
+	this.PrimaryIDs = null;	
 	/*pagination starting index*/
 	this.StartIndex = 1;
 	/*pagination ending index*/
-	this.EndIndex = meta.data.length;
+	this.EndIndex = 1;
 	/*pagination current active page number*/
 	this.CurrentPage = 1;
 	/*pagination number entries per page*/
@@ -33,8 +33,13 @@ var FactoryGrid = function(meta, keyIds){
 	this.ParentTable = null;
 	this.SelectedRow = null;
 	
+	this.SetDataSource = function(mData) {
+		this.MetaData = mData;
+		this.Rows = mData;
+	};	
+	
 	/**
-	 * Constructor for TABLE_GRID (this is where everything start)
+	 * Constructor for FactoryGrid (this is where everything start)
 	 */
 	this.InitGrid = function(pcontainer) {
 		this.ParentContainer = pcontainer;
@@ -270,26 +275,11 @@ var FactoryGrid = function(meta, keyIds){
 		footerContainer.append(footerInfoDiv);
 		
 		var paginationDiv = $('<div class="rapidjs-factory-grid-pagination-div" id="rapidjs-factory-grid-pagination-div"></div>');	
-		footerContainer.append(paginationDiv);
-		
-		var actionToolbar =$('<div class="rapidjs-submitbtn-div" style="padding-right: 0px;"></div>');
-		
-		for(var i = 0; i < this.MetaData.action.length; i++) {
-			if(this.MetaData.action[i] == "ACK") {
-				actionToolbar.append($('<input type="button" data="ACK" onclick="initSingleRowView(this);" value="Acknowledge"></input>'));
-			}else if(this.MetaData.action[i] == "UPDATE") {
-				actionToolbar.append($('<input type="button" data="UPDATE" onclick="initSingleRowView(this);" value="Update"></input>'));
-			}else if(this.MetaData.action[i] == "DPO-UPDATE") {
-				actionToolbar.append($('<input type="button" data="DPO-UPDATE" onclick="initSingleRowView(this);" value="Dpo Update"></input>'));
-			}else if(this.MetaData.action[i] == "STATION-UPDATE") {
-				actionToolbar.append($('<input type="button" data="STATION-UPDATE" onclick="initSingleRowView(this);" value="Station Update"></input>'));
-			}
-		}
+		footerContainer.append(paginationDiv);	
 				
 		skeleton.append(toolbar);
 		skeleton.append(contentDiv);
 		skeleton.append(footerContainer);		
-		skeleton.append(actionToolbar);
 		
 		this.ParentTable = contentTable;
 		this.ParentContainer.append(skeleton);
@@ -298,18 +288,27 @@ var FactoryGrid = function(meta, keyIds){
 	/**
 	 * Set table grid's Columns
 	 */
-	this.SetColumn = function() {		
-		this.NumberOfColumn = this.MetaData.column.length;
+	this.SetColumn = function() {
+		var columns = []; 
+		var firstRowObj = this.MetaData[0];		
+		this.NumberOfColumn = RjUtils.GetKeyCount(firstRowObj);		
+		
+		for (var key in firstRowObj) {
+			 if (firstRowObj.hasOwnProperty(key)) {
+				 columns.push(key);
+			 }
+		}		
+		
 		var $thead = $('<thead></thead>');
 		var $tr = $('<tr style="background:#fff;"></tr>');		
 		
-		for(var i = 0; i < this.MetaData.column.length; i++) {
+		for(var i = 0; i < columns.length; i++) {
 			/*Check any password field there.*/
-			if(this.MetaData.column[i].toLowerCase().indexOf("password") != -1) {
+			if(columns[i].toLowerCase().indexOf("password") != -1) {
 				this.PasswordIndex = i;
 			}
-			console.log(this.MetaData.column[i]);
-			$tr.append($('<th><div class="rapidjs-factory-grid-column-div">'+this.MetaData.column[i]+'</div></th>'));			
+			console.log(columns[i]);
+			$tr.append($('<th><div class="rapidjs-factory-grid-column-div">'+columns[i]+'</div></th>'));			
 		}
 		
 		$thead.append($tr);
@@ -373,7 +372,8 @@ var FactoryGrid = function(meta, keyIds){
 		var $tr = null; 
 		
 		for(var i = this.StartIndex; i <= this.EndIndex; i++) {
-			$tr = $('<tr data="'+this.PrimaryIDs[i-1]+'"></tr>');
+			//$tr = $('<tr data="'+this.PrimaryIDs[i-1]+'"></tr>');
+			$tr = $('<tr data=""></tr>');
 			
 			$tr.click(this, function(e){
 				e.data.SelectedRow = $(this).attr('data');				

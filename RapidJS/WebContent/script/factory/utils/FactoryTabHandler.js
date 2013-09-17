@@ -23,7 +23,10 @@ var FactoryTabHandler = function() {
 				e.data.CurrentTab = $(this).attr("metaname");
 				FactoryObj.MainTabItemClickHandler($(this));				
 			});
-			TabDiv.append($('<div id="'+MainTabObj[i]+'" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
+			/*Context list container (app list, datasource list ..etc)*/
+			TabDiv.append($('<div id="'+MainTabObj[i]+'-context-list-parent" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
+			/*Context sub tab container (element, data, action , css ..etc)*/
+			TabDiv.append($('<div id="'+MainTabObj[i]+'-context-subtab-parent" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
 		}	
 	};
 	
@@ -51,7 +54,7 @@ var FactoryTabHandler = function() {
 			if(i == 0) {
 				subTabDiv.append($('<div class="tabs-spacer"></div>'));
 			}
-			subTabDiv.append($('<div id="'+FactoryObj.SubTab[i]+'">.ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-navtabs-bottom .ui-tabs-nav</div>'));
+			subTabDiv.append($('<div id="'+FactoryObj.SubTab[i]+'"></div>'));
 		}
 		
 		ulElem.appendTo( ".tabs-bottom" );		

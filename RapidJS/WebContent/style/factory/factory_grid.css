@@ -1,0 +1,211 @@
+.master-div {
+	position:relative;
+	height:100%;
+	padding:50px;
+}
+
+#rapidjs-factory-container {	
+	display:none;
+}
+
+.rapidjs-factory-grid-container-div {
+	position : relative;
+	padding:5px;
+	width:980px;
+	min-height:500px;
+	margin:0 auto;	
+}
+
+.rapidjs-factory-grid-title-div {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 25px;
+	color: #4E6CA3;
+	border-bottom: 1px solid #B0BED9;
+	clear: both;
+}
+
+.rapidjs-factory-grid-toolbar-div {
+	padding: 5px 0px;
+	position:relative;
+	overflow:auto;	
+	color: #222222;
+	white-space: nowrap;	
+}
+
+.rapidjs-factory-grid-row-count {
+	width: 40%;
+	float: left;
+}
+
+.rapidjs-factory-grid-search-bar-div {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+.rapidjs-factory-grid-content-div {
+	
+}
+
+.rapidjs-factory-grid-footer-div {
+	padding: 10px 0px;
+	position:relative;
+	overflow:auto;
+	border-top: 1px solid #666;
+
+	color: #222222;
+	white-space: nowrap;	
+}
+
+.rapidjs-factory-grid-footer-info {
+	width: 50%;
+	float: left;
+	padding-top:3px;
+}
+
+.rapidjs-factory-grid-footer-info span {
+	font-weight:bold;
+}
+
+.rapidjs-factory-grid-pagination-div {	
+	float: right;
+	text-align: right;	
+}
+
+.rapidjs-factory-grid-pagination-btn {
+	border: 1px solid #d3d3d3;
+	background: #e6e6e6 url(../images/ui-bg_glass.png) 50% 50% repeat-x;
+	font-weight: normal;
+	padding: 2px 6px;
+	margin: 0;
+	cursor: pointer;
+	color: #333 !important;
+	display: inline-block;
+	position: relative;
+	text-decoration: none !important;
+	cursor: pointer;
+	text-align: center;
+	zoom: 1;
+	overflow: visible;
+}
+
+.rapidjs-factory-grid-pagination-btn-active {
+	padding: 3px 5px;
+	background: #555;
+	color: #fff;
+}
+
+.ui-state-disabled {
+	opacity: .35;
+	filter: Alpha(Opacity=35);
+	background-image: none;
+}
+
+.rapidjs-factory-grid-content-table {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+	border-collapse: collapse;
+	border:solid 1px #ccc;
+}
+
+.rapidjs-factory-grid-content-table thead{
+	
+}
+
+.rapidjs-factory-grid-content-table thead th{
+	border-bottom: 1px solid #666;	
+	text-transform:capitalize;
+	font-weight: bold;
+	padding:10px 0px;
+	margin: 0;
+	cursor: pointer;
+	color: #333 !important;
+	text-align: left;
+	zoom: 1;
+	overflow: visible;
+}
+
+.rapidjs-factory-grid-content-table td{
+	padding:5px 15px;
+}
+
+.rapidjs-factory-grid-content-table tr:hover td{
+	background: #c0bf2f;
+	color:#fff;	
+}
+
+.rapidjs-factory-grid-content-table tr:nth-child(even) {background: #fff;}
+.rapidjs-factory-grid-content-table tr:nth-child(odd) {background: #eee;}
+
+.rapidjs-factory-grid-content-table tr td {
+	border-bottom: 1px solid #fff;
+	white-space: nowrap;
+	font-size: 13px !important;
+	color:#333;
+	cursor:pointer;
+	cursor:hand;
+}
+
+.rapidjs-factory-grid-content-table-tr-active {
+	background: #c5b790 !important;
+	color:#fff !important;
+}
+
+.rapidjs-factory-grid-column-div {
+	position: relative;
+	padding: 0px 15px;
+}
+
+.rapidjs-factory-grid-cell-div {
+	border-left: 0 solid #fff;
+	padding: 5px;
+}
+
+div#rapidjs-grid-view-pop-up {
+    display: none;
+    position: absolute;
+    width: 280px;
+    padding: 10px;
+    background: #eeeeee;
+    color: #000000;
+    border: 1px solid #bbb;
+	font-size: 90%;
+}
+
+div#rapidjs-grid-view-pop-up table {
+	margin:0px;
+	padding:0px;
+	width:100%;
+	height:auto;
+}
+
+div#rapidjs-grid-view-pop-up table th {
+	padding:5px;
+	width:50%;	
+	font-weight:bold;
+}
+
+div#rapidjs-grid-view-pop-up table td {
+	padding:5px;
+	width:50%;
+}
+
+div#rapidjs-grid-view-pop-up table td:first-child {
+	text-align:right;
+	text-transform:capitalize;
+}
+
+#rapidjs-grid-view-child-records {
+	padding: 20px 30px;
+	padding-top:0px;
+	background: #fff;
+}
+
+#rapidjs-factory-grid-child-content-table {
+	
+}
