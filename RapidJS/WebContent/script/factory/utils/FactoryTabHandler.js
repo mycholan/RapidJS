@@ -6,6 +6,7 @@ var FactoryTabHandler = function() {
 		var liElem = null;
 		
 		TabDiv.append(ulElem);
+		TabDiv.append(this.GetTabToolBar());
 		
 		for(var i = 0; i < MainTabObj.length; i++) {
 			liElem = $('<li metaname="'+MainTabObj[i]+'" class="rapidjs-factory-state-default"><a href="#'+MainTabObj[i]+'">'+MainTabObj[i].substring(3)+'</a></li>');			
@@ -17,7 +18,9 @@ var FactoryTabHandler = function() {
 				$(this).removeClass().addClass("rapidjs-factory-state-active");
 				
 				$(this).parent().parent().children("div").each(function(){
-					$(this).hide();
+					if(!$(this).hasClass('rapidjs-factory-toolbar')) {
+						$(this).hide();
+					}					
 				});				
 				$("#"+$(this).attr("metaname")).show();
 				e.data.CurrentTab = $(this).attr("metaname");
@@ -36,8 +39,7 @@ var FactoryTabHandler = function() {
 		var ulElem = $('<ul class="rapidjs-factory-tabs-bottom rapidjs-factory-reset rapidjs-factory-clearfix rapidjs-factory-widget-header"></ul>');		
 		var liElem = null;
 		
-		ParentDiv.html("");
-		ParentDiv.append(this.GetTabToolBar());
+		ParentDiv.html("");		
 		ParentDiv.append(subTabDiv);		
 				
 		for(var i = 0; i < FactoryObj.SubTab.length; i++) {			

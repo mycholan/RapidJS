@@ -50,6 +50,7 @@ var RapidCrud = function(){
 			Communicator(function(){
 				FactoryGridObj.SetDataSource(ResponseObject);
 				FactoryGridObj.InitGrid($("#"+liElm.attr("metaname")+"-context-list-parent"));
+				$("#"+liElm.attr("metaname")+"-context-list-parent").show();
 				
 				FactoryObj.TabHandler.InitSubTabBar($("#"+liElm.attr("metaname")+"-context-subtab-parent"));
 			});

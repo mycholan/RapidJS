@@ -15,7 +15,9 @@ var FactoryGrid = function(){
 	/*Holds filtered rows*/
 	this.Rows = null;
 	/*Used for rapidjs */
-	this.PrimaryIDs = null;	
+	this.PrimaryIDs = null;
+	/*Holds current data source's keys*/
+	this.Columns = null;
 	/*pagination starting index*/
 	this.StartIndex = 1;
 	/*pagination ending index*/
@@ -289,26 +291,25 @@ var FactoryGrid = function(){
 	 * Set table grid's Columns
 	 */
 	this.SetColumn = function() {
-		var columns = []; 
+		this.Columns = []; 
 		var firstRowObj = this.MetaData[0];		
 		this.NumberOfColumn = RjUtils.GetKeyCount(firstRowObj);		
 		
 		for (var key in firstRowObj) {
 			 if (firstRowObj.hasOwnProperty(key)) {
-				 columns.push(key);
+				 this.Columns.push(key);
 			 }
 		}		
 		
 		var $thead = $('<thead></thead>');
 		var $tr = $('<tr style="background:#fff;"></tr>');		
 		
-		for(var i = 0; i < columns.length; i++) {
+		for(var i = 0; i < this.Columns.length; i++) {
 			/*Check any password field there.*/
-			if(columns[i].toLowerCase().indexOf("password") != -1) {
+			if(this.Columns[i].toLowerCase().indexOf("password") != -1) {
 				this.PasswordIndex = i;
-			}
-			console.log(columns[i]);
-			$tr.append($('<th><div class="rapidjs-factory-grid-column-div">'+columns[i]+'</div></th>'));			
+			}			
+			$tr.append($('<th><div class="rapidjs-factory-grid-column-div">'+this.Columns[i]+'</div></th>'));			
 		}
 		
 		$thead.append($tr);
@@ -387,30 +388,17 @@ var FactoryGrid = function(){
 				
 				$(this).children().each(function(){
 					$(this).addClass("rapidjs-factory-grid-content-table-tr-active");
-				});
-				
-				for(var i = 0; i < factoryData.length; i++) {
-					var row = factoryData[i];						
-					if(parseInt(row.id) == parseInt($(this).attr('data'))) {
-						if(parseInt(row.id) == parseInt($(this).attr('data'))) {
-							for (var kkey in row) {
-								if(row[kkey] instanceof Array){
-									TableGrid.SetChildContent(row[kkey], kkey);
-									break;
-								}
-							}
-						}
-					}
-				}				
+				});						
 			});			
 			
-			for(var j = 0; j < this.Rows[i-1].length; j++) {
+			for(var j = 0; j < this.Columns.length; j++) {
 				if(this.PasswordIndex != -1 && this.PasswordIndex == j){
 					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">##############</div></td>');
 				} else {
-					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">' + this.Rows[i-1][j] + '</div></td>');
-				}				
-			}
+					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">' + this.Rows[i] + '</div></td>');
+				}
+			}			
+			
 			$tbody.append($tr);			
 		}	
 		this.ParentTable.append($tbody);		
