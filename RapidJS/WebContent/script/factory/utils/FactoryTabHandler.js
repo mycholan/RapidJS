@@ -1,5 +1,58 @@
+/**
+ * 
+ * <div> //Context parent container (context could be "", "" or "")
+ * 		<ul> //Main tab
+ * 			<li>Main Tab Item 1</li>
+ * 			<li>Main Tab Item 2</li>
+ * 			--------
+ * 			--------
+ * 		</ul> 
+ * 		
+ * 
+ * 		<div> //Main Tab Item 1's content panel
+ * 			<div> //Context list container
+ * 
+ * 			</div>
+ * 
+ * 			<div> //Sub tab container
+ * 				<div> //Sub tab wrapper div
+ * 
+ * 					<div> //Sub Tab Item 1's content panel
+ * 
+ * 					</div>
+ * 
+ * 					<div> //Sub Tab Item 2's content panel
+ * 
+ * 					</div>
+ * 
+ * 					-------------
+ * 					-------------
+ * 
+ * 					<ul> //Sub tab
+ * 						<li>Sub Tab Item 1</li>
+ * 						<li>Sub Tab Item 2</li>
+ * 						---------
+ * 						---------
+ * 					</ul> 
+ * 				</div>
+ * 			</div>
+ * 		</div>
+ * 
+ * 		<div> //Main Tab Item 2's content panel
+ * 			---------
+ * 			---------
+ * 			---------
+ * 		</div>
+ * 
+ * 		-------------
+ * 		-------------
+ * </div>
+ * 
+ */
+
 var FactoryTabHandler = function() {
-	this.CurrentTab = null;
+	this.CurrentMainTab = null;
+	this.CurrentSubTab = null;
 	
 	this.InitMainTabBar = function(MainTabObj, TabDiv) {				
 		var ulElem = $("<ul class='rapidjs-factory-tabs-nav rapidjs-factory-reset rapidjs-factory-clearfix rapidjs-factory-widget rapidjs-factory-widget-header'></ul>");		
@@ -23,7 +76,7 @@ var FactoryTabHandler = function() {
 					}					
 				});				
 				$("#"+$(this).attr("metaname")).show();
-				e.data.CurrentTab = $(this).attr("metaname");
+				e.data.CurrentMainTab = $(this).attr("metaname");
 				FactoryObj.MainTabItemClickHandler($(this));				
 			});
 			/*Context list container (app list, datasource list ..etc)*/
@@ -43,14 +96,15 @@ var FactoryTabHandler = function() {
 		ParentDiv.append(subTabDiv);		
 				
 		for(var i = 0; i < FactoryObj.SubTab.length; i++) {			
-			liElem = $('<li metaname="'+FactoryObj.SubTab[i]+'" maintab="'+this.CurrentTab+'" class="rapidjs-factory-state-default"><a href="#'+FactoryObj.SubTab[i]+'">'+FactoryObj.SubTab[i]+'</a></li>');
+			liElem = $('<li metaname="'+FactoryObj.SubTab[i]+'" maintab="'+this.CurrentMainTab+'" class="rapidjs-factory-state-default"><a href="#'+FactoryObj.SubTab[i]+'">'+FactoryObj.SubTab[i]+'</a></li>');
 			ulElem.append(liElem);
-			liElem.click(function(){
+			liElem.click(this, function(e){
 				$(this).parent().children().each(function(){					
 					$(this).attr('class', 'rapidjs-factory-state-default');
 				});				
 				$(this).removeClass().addClass("rapidjs-factory-state-active");
-				AlertObj.AlertUser("Tab Selected", "Youe have selected tab : "+$(this).attr("maintab"));
+				e.data.CurrentSubTab = $(this).attr("metaname");
+				
 				FactoryObj.GetTabChildMetaData($(this).attr("maintab"));
 			});
 			if(i == 0) {

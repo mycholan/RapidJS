@@ -37,6 +37,7 @@ var FactoryGrid = function(){
 	
 	this.SetDataSource = function(mData) {
 		this.MetaData = mData;
+		console.log("SetDataSource = "+JSON.stringify(mData));
 		this.Rows = mData;
 	};	
 	
@@ -75,18 +76,18 @@ var FactoryGrid = function(){
 		var flaQ = false;
 		
 		if(sText == "" || sText == " " || sText == null) {
-			this.Rows = this.MetaData.data;
+			this.Rows = this.MetaData;
 		}else {
 			this.Rows = new Array();
-			for(var i = 0; i < this.MetaData.data.length; i++) {
+			for(var i = 0; i < this.MetaData.length; i++) {
 				flaQ = false;
 				for(var j = 0; j < this.NumberOfColumn; j++) {
-					if(this.MetaData.data[i][j].toUpperCase().indexOf(searchText) !== -1) {	
+					if(this.MetaData[i][j].toUpperCase().indexOf(searchText) !== -1) {	
 						flaQ = true;								
 					}
 				}
 				if(flaQ) {
-					this.Rows.push(this.MetaData.data[i]);	
+					this.Rows.push(this.MetaData[i]);	
 				}
 			}						
 		}		
@@ -371,6 +372,7 @@ var FactoryGrid = function(){
 		
 		var $tbody = $('<tbody></tbody>');
 		var $tr = null; 
+		var row = null; 
 		
 		for(var i = this.StartIndex; i <= this.EndIndex; i++) {
 			//$tr = $('<tr data="'+this.PrimaryIDs[i-1]+'"></tr>');
@@ -389,13 +391,14 @@ var FactoryGrid = function(){
 				$(this).children().each(function(){
 					$(this).addClass("rapidjs-factory-grid-content-table-tr-active");
 				});						
-			});			
-			
+			});		
+				
+			row = this.Rows[i-1];			
 			for(var j = 0; j < this.Columns.length; j++) {
 				if(this.PasswordIndex != -1 && this.PasswordIndex == j){
 					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">##############</div></td>');
 				} else {
-					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">' + this.Rows[i] + '</div></td>');
+					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">' + row[this.Columns[j]] + '</div></td>');
 				}
 			}			
 			
