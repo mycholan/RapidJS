@@ -36,8 +36,7 @@ var FactoryGrid = function(){
 	this.SelectedRow = null;
 	
 	this.SetDataSource = function(mData) {
-		this.MetaData = mData;
-		console.log("SetDataSource = "+JSON.stringify(mData));
+		this.MetaData = mData;		
 		this.Rows = mData;
 	};	
 	
@@ -58,6 +57,7 @@ var FactoryGrid = function(){
 		
 		this.ParentContainer.html("");
 		this.RenderSkeletton();
+		this.SelectedRow = null;
 		this.SetPagination();
 	};
 	
@@ -306,11 +306,13 @@ var FactoryGrid = function(){
 		var $tr = $('<tr style="background:#fff;"></tr>');		
 		
 		for(var i = 0; i < this.Columns.length; i++) {
-			/*Check any password field there.*/
-			if(this.Columns[i].toLowerCase().indexOf("password") != -1) {
-				this.PasswordIndex = i;
-			}			
-			$tr.append($('<th><div class="rapidjs-factory-grid-column-div">'+this.Columns[i]+'</div></th>'));			
+			if(this.Columns[i].toUpperCase() != "ID") {
+				/*Check any password field there.*/
+				if(this.Columns[i].toLowerCase().indexOf("password") != -1) {
+					this.PasswordIndex = i;
+				}			
+				$tr.append($('<th><div class="rapidjs-factory-grid-column-div"><span class="rapidjs-factory-grid-column-header-span">'+this.Columns[i].replace(/_/g, " ").replace(/-/g, " ")+'</span></div></th>'));
+			}
 		}
 		
 		$thead.append($tr);
@@ -376,7 +378,7 @@ var FactoryGrid = function(){
 		
 		for(var i = this.StartIndex; i <= this.EndIndex; i++) {
 			//$tr = $('<tr data="'+this.PrimaryIDs[i-1]+'"></tr>');
-			$tr = $('<tr data=""></tr>');
+			$tr = $('<tr data="'+this.Rows[i-1]["ID"]+'"></tr>');
 			
 			$tr.click(this, function(e){
 				e.data.SelectedRow = $(this).attr('data');				
@@ -395,10 +397,12 @@ var FactoryGrid = function(){
 				
 			row = this.Rows[i-1];			
 			for(var j = 0; j < this.Columns.length; j++) {
-				if(this.PasswordIndex != -1 && this.PasswordIndex == j){
-					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">##############</div></td>');
-				} else {
-					$tr.append('<td><div class="rapidjs-factory-grid-cell-div">' + row[this.Columns[j]] + '</div></td>');
+				if(this.Columns[j].toUpperCase() != "ID") {
+					if(this.PasswordIndex != -1 && this.PasswordIndex == j){
+						$tr.append('<td><div class="rapidjs-factory-grid-cell-div">##############</div></td>');
+					} else {
+						$tr.append('<td><div class="rapidjs-factory-grid-cell-div">' + row[this.Columns[j]] + '</div></td>');
+					}
 				}
 			}			
 			

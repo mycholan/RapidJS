@@ -158,7 +158,11 @@
 
 .rapidjs-factory-grid-column-div {
 	position: relative;
-	padding: 0px 15px;
+	padding: 0px 15px;	
+}
+
+.rapidjs-factory-grid-column-header-span {
+	text-transform:capitalize;
 }
 
 .rapidjs-factory-grid-cell-div {

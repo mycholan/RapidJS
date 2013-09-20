@@ -1,4 +1,5 @@
 var RapidCrud = function(){
+	this.TabHandler = null;
 	this.BaseTab = null;
 	this.SubTab = null;
 	
@@ -25,9 +26,7 @@ var RapidCrud = function(){
 	        appType : apptype,
 	        active : active
 		};
-	};
-	
-	this.TabHandler = null;
+	};	
 	
 	this.DisplayMainTab = function() {
 		if(ResponseObject == null){	
@@ -85,7 +84,7 @@ var RapidCrud = function(){
 			return;
 		}
 		
-		console.log(JSON.stringify(ResponseObject));
+		//console.log(JSON.stringify(ResponseObject));
 	};
 	
 	this.PrepareApplicationTab = function() {
