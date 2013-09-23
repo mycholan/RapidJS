@@ -20,11 +20,25 @@ public class Rapid_MetaDataAccessObject {
 	}
 	
 	public String doGetMetaData() {
-		if(rContext.getRequestModel().getTable().equals("BASE")) {
-			System.out.println("Rapid_MetaHandler, BASE TYPE BLOCK");
+		if(rContext.getRequestModel().getTable().equals("BASE")) {			
 			/*return all the table which will be to create tabs in factory page*/
 			jArray = JSONArray.fromObject(FactoryMetaObj.getFactoryTab());
 		}else if(rContext.getRequestModel().getTable().equals("SUBTAB")) {
+			/*return meta tab which will be used to create sub tabs*/
+			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+		}else if(rContext.getRequestModel().getTable().equals("ELEMENT")) {
+			/*return meta tab which will be used to create sub tabs*/
+			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+		}else if(rContext.getRequestModel().getTable().equals("ACTION")) {
+			/*return meta tab which will be used to create sub tabs*/
+			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+		}else if(rContext.getRequestModel().getTable().equals("STYLE")) {
+			/*return meta tab which will be used to create sub tabs*/
+			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+		}else if(rContext.getRequestModel().getTable().equals("DATA")) {
+			/*return meta tab which will be used to create sub tabs*/
+			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+		}else if(rContext.getRequestModel().getTable().equals("DEVICE")) {
 			/*return meta tab which will be used to create sub tabs*/
 			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
 		}else{

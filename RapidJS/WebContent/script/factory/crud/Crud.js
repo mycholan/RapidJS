@@ -2,6 +2,11 @@ var RapidCrud = function(){
 	this.TabHandler = null;
 	this.BaseTab = null;
 	this.SubTab = null;
+	this.ElementMeta = null;
+	this.ActionMeta = null;
+	this.StyleMeta = null;
+	this.DataMeta = null;
+	this.DiviceMeta = null;
 	
 	this.FetchMainTab = function() {
 		RequestObject = new CreateRequestObject("META", "GET", "BASE", "NO", 0, 0, "", "", [], [], [], []);
@@ -15,6 +20,46 @@ var RapidCrud = function(){
 		RequestObject = new CreateRequestObject("META", "GET", "SUBTAB", "NO", 0, 0, "", "", [], [], [], []);
 		Communicator(function(){
 			FactoryObj.SubTab = ResponseObject;
+			FactoryObj.DisplayMainTab();
+		});
+	};
+	
+	this.FetchElementMeta = function() {
+		RequestObject = new CreateRequestObject("META", "GET", "ELEMENT", "NO", 0, 0, "", "", [], [], [], []);
+		Communicator(function(){
+			FactoryObj.ElementMeta = ResponseObject;
+			FactoryObj.FetchActionMeta();
+		});
+	};
+	
+	this.FetchActionMeta = function() {
+		RequestObject = new CreateRequestObject("META", "GET", "ACTION", "NO", 0, 0, "", "", [], [], [], []);
+		Communicator(function(){
+			FactoryObj.ActionMeta = ResponseObject;
+			FactoryObj.FetchStyleMeta();
+		});
+	};
+	
+	this.FetchStyleMeta = function() {
+		RequestObject = new CreateRequestObject("META", "GET", "STYLE", "NO", 0, 0, "", "", [], [], [], []);
+		Communicator(function(){
+			FactoryObj.StyleMeta = ResponseObject;
+			FactoryObj.FetchDataMeta();
+		});
+	};
+	
+	this.FetchDataMeta = function() {
+		RequestObject = new CreateRequestObject("META", "GET", "DATA", "NO", 0, 0, "", "", [], [], [], []);
+		Communicator(function(){
+			FactoryObj.DataMeta = ResponseObject;
+			FactoryObj.FetchDeviceMeta();
+		});
+	};
+	
+	this.FetchDeviceMeta = function() {
+		RequestObject = new CreateRequestObject("META", "GET", "DEVICE", "NO", 0, 0, "", "", [], [], [], []);
+		Communicator(function(){
+			FactoryObj.DiviceMeta = ResponseObject;
 			FactoryObj.DisplayMainTab();
 		});
 	};

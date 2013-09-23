@@ -37,8 +37,7 @@ public class Rapid_Router {
 			}
 		} else if (rContext.getRequestModel().getRjType().equals("META")) {
 			Rapid_MetaActionHandler metaAction = new Rapid_MetaActionHandler(rContext);
-			if (rContext.getRequestModel().getAction().equals("GET")) {
-				System.out.println("ActionRouter, META, GET");
+			if (rContext.getRequestModel().getAction().equals("GET")) {				
 				responseStr = metaAction.doMetaAction();
 			} else if (rContext.getRequestModel().getAction().equals("CHECK")) {
 
