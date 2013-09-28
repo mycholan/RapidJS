@@ -20,7 +20,7 @@ var RapidCrud = function(){
 		RequestObject = new CreateRequestObject("META", "GET", "SUBTAB", "NO", 0, 0, "", "", [], [], [], []);
 		Communicator(function(){
 			FactoryObj.SubTab = ResponseObject;
-			FactoryObj.DisplayMainTab();
+			FactoryObj.FetchElementMeta();
 		});
 	};
 	

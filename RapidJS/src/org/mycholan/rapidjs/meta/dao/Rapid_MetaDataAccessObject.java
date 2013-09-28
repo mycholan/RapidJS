@@ -1,10 +1,13 @@
 package org.mycholan.rapidjs.meta.dao;
 
+import java.util.ArrayList;
+
 import net.sf.json.JSONArray;
 
 import org.mycholan.rapidjs.loader.Rapid_Initializer;
 import org.mycholan.rapidjs.model.Rapid_ApplicationMetaData;
 import org.mycholan.rapidjs.model.Rapid_FactoryMetaData;
+import org.mycholan.rapidjs.model.Rapid_RowValueModel;
 import org.mycholan.rapidjs.session.RapidContext;
 
 public class Rapid_MetaDataAccessObject {
@@ -27,7 +30,7 @@ public class Rapid_MetaDataAccessObject {
 			/*return meta tab which will be used to create sub tabs*/
 			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
 		}else if(rContext.getRequestModel().getTable().equals("ELEMENT")) {
-			/*return meta tab which will be used to create sub tabs*/
+			/*return meta tab which will be used to create sub tabs*/			
 			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
 		}else if(rContext.getRequestModel().getTable().equals("ACTION")) {
 			/*return meta tab which will be used to create sub tabs*/
@@ -55,5 +58,19 @@ public class Rapid_MetaDataAccessObject {
 		}
 		
 		return "{\"status\":\"Table not found\", \"info\":\"\"}";
+	}
+	
+	private String getSubTabPanelMeta(String table, String subtab) {
+		ArrayList<Rapid_RowValueModel> rowList = null;
+		
+		if() {
+			
+		}
+		for(int i = 0; i < FactoryMetaObj.getFactoryInitValue().size(); i++) {
+			if(FactoryMetaObj.getFactoryInitValue().get(i).getTableName().toLowerCase().equals(rContext.getRequestModel().getTable().toLowerCase())) {
+				rowList = FactoryMetaObj.getFactoryInitValue().get(i).getTableValue();
+			}
+		}
+		return "";
 	}
 }

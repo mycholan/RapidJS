@@ -46,7 +46,7 @@ public class Rapid_InitSchema {
     		 }else {
     			 log.info("Initializing schema for Factory failed.!");
     		 }
-    	 }else {
+    	 } else {
     		 log.info("Parsing factory.json file Failed.!");
     	 }
     	 
