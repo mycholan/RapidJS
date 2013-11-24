@@ -1,101 +1,104 @@
 package org.mycholan.rapidjs.model;
 
 public class Rapid_ParamModel {
-	private String RjType;
+	private String Target;
 	private String Action;
 	private String Table;
-	private String User;
-	private String WhereKey;
-	private String WhereValue;     
-	private String[] UploadKey;
-	private String[] UploadValue;
-	private String[] DownloadKey;
-	private String[] DownloadValue;
-	private int StartIndex;
-	private int EndIndex;
-
-	public Rapid_ParamModel(String rjType, String action, String table, String user, String whereKey, String whereValue, String[] uploadKey, String[] uploadValue,
-			String[] downloadKey, String[] downloadValue, int startIndex, int endIndex) {
-		super();
-		RjType = rjType;
-		Action = action;
-		Table = table;
-		User = user;
-		WhereKey = whereKey;
-		WhereValue = whereValue;
-		UploadKey = uploadKey;
-		UploadValue = uploadValue;
-		DownloadKey = downloadKey;
-		DownloadValue = downloadValue;
-		StartIndex = startIndex;
-		EndIndex = endIndex;
-	}
-
+	private String User;	
+	private String[] Projection;
+	private String[] Selector;     
+	private String SelectorType;
+	private String OrderBy;
+	private String GroupBy;
+	private String Having;
+	private int Page;
+	private int Count;
+	private String Data;
+	
 	public Rapid_ParamModel() {
 		super();
-	}	
+	}
 	
-	public String getRjType() {
-		return RjType;
+	public String getTarget() {
+		return Target;
 	}
-
-	public void setRjType(String rjType) {
-		RjType = rjType;
+	public void setTarget(String target) {
+		Target = target;
 	}
-
 	public String getAction() {
 		return Action;
 	}
-
 	public void setAction(String action) {
 		Action = action;
 	}
-
 	public String getTable() {
 		return Table;
 	}
-
 	public void setTable(String table) {
 		Table = table;
 	}
-
 	public String getUser() {
 		return User;
 	}
-
 	public void setUser(String user) {
 		User = user;
-	}     
-
-	public String getWhereKey() {
-		return WhereKey;
 	}
-
-	public void setWhereKey(String whereKey) {
-		WhereKey = whereKey;
+	public String[] getProjection() {
+		return Projection;
 	}
-
-	public String getWhereValue() {
-		return WhereValue;
+	public void setProjection(String[] projection) {
+		Projection = projection;
 	}
-
-	public void setWhereValue(String whereValue) {
-		WhereValue = whereValue;
+	public String[] getSelector() {
+		return Selector;
 	}
-
-	public String[] getUploadKey() {
-		return UploadKey;
+	public void setSelector(String[] selector) {
+		Selector = selector;
 	}
-
-	public void setUploadKey(String[] uploadKey) {
-		UploadKey = uploadKey;
+	public String getSelectorType() {
+		return SelectorType;
 	}
-
-	public String[] getUploadValue() {
-		return UploadValue;
+	public void setSelectorType(String selectorType) {
+		SelectorType = selectorType;
 	}
-
-	public void setUploadValue(String[] uploadValue) {
+	public String getOrderBy() {
+		return OrderBy;
+	}
+	public void setOrderBy(String orderBy) {
+		OrderBy = orderBy;
+	}
+	public String getGroupBy() {
+		return GroupBy;
+	}
+	public void setGroupBy(String groupBy) {
+		GroupBy = groupBy;
+	}
+	public String getHaving() {
+		return Having;
+	}
+	public void setHaving(String having) {
+		Having = having;
+	}
+	public int getPage() {
+		return Page;
+	}
+	public void setPage(int page) {
+		Page = page;
+	}
+	public int getCount() {
+		return Count;
+	}
+	public void setCount(int count) {
+		Count = count;
+	}
+	public String getData() {
+		return Data;
+	}
+	public void setData(String data) {
+		Data = data;
+	}	
+}
+ uploadValue) {
 		UploadValue = uploadValue;
 	}
 

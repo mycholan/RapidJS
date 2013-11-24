@@ -70,7 +70,7 @@ function TooltipAttacher(elem) {
 
 function Communicator(callback) {
 	ResponseObject = null;
-	
+	console.log(callback);
 	$.getJSON("Rapid_Docker", {
 		"DATA" : JSON.stringify(RequestObject)
 	}, function(data) {		
@@ -97,26 +97,24 @@ function Communicator(callback) {
 
 /*Used to create initial request object*/
 function InitRequestObject() {
-	return new CreateRequestObject("RJS", "INIT", "", "NO", 0, 0, "", "", [], [], [], []);
+	return new CreateRequestObject("RJS", "INIT", "", "NO", 0, 0, [], [], [], []);
 }
 
-function CreateRequestObject(target, action, table, user, startindex, endindex, wherekey, wherevalue, dkey, dvalue, ukey, uvalue) {
+function CreateRequestObject(target, action, table, user, startindex, endindex, wherekey, wherevalue, columnkey, columnvalue) {	
 	this.TARGET_TYPE = target;
 	this.ACTION = action;	
 	this.TABLE = table;
 	this.USER = user;
 	this.START_INDEX = startindex;
-	this.END_INDEX = endindex;
+	this.RESULT_COUNT = endindex;
+	this.COLUMN_KEY = columnkey;
+	this.COLUMN_VALUE = columnvalue;
 	this.WHERE_KEY = wherekey;
-	this.WHERE_VALUE = wherevalue;
-	this.DOWNLOAD_KEY = dkey;
-	this.DOWNLOAD_VALUE = dvalue;
-	this.UPLOAD_KEY = ukey;
-	this.UPLOAD_VALUE = uvalue;
+	this.WHERE_VALUE = wherevalue;	
 }
 
 function InitRapidContext() {
-	return new CreateRapidContextObject("", "", "", new Array(), new Array(), new Array());
+	return new CreateRapidContextObject("", "", "", "", 0, 0, [], [], [], []);
 }
 
 /*One of the main object used by RapidJS, this constructor function creates object 
@@ -126,6 +124,9 @@ function CreateRapidContextObject (user, app, window, container, layout, view) {
 	this.Application = app;
 	this.Window = window;
 	this.Container = container;
+	this.Layout = layout;
+	this.View = view;
+}r;
 	this.Layout = layout;
 	this.View = view;
 }

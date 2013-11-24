@@ -9,7 +9,7 @@ var RapidCrud = function(){
 	this.DiviceMeta = null;
 	
 	this.FetchMainTab = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "BASE", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "BASE", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.BaseTab = ResponseObject;
 			FactoryObj.FetchSubTab();
@@ -17,7 +17,7 @@ var RapidCrud = function(){
 	};
 	
 	this.FetchSubTab = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "SUBTAB", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "SUBTAB", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.SubTab = ResponseObject;
 			FactoryObj.FetchElementMeta();
@@ -25,7 +25,7 @@ var RapidCrud = function(){
 	};
 	
 	this.FetchElementMeta = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "ELEMENT", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "ELEMENT", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.ElementMeta = ResponseObject;
 			FactoryObj.FetchActionMeta();
@@ -33,7 +33,7 @@ var RapidCrud = function(){
 	};
 	
 	this.FetchActionMeta = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "ACTION", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "ACTION", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.ActionMeta = ResponseObject;
 			FactoryObj.FetchStyleMeta();
@@ -41,7 +41,7 @@ var RapidCrud = function(){
 	};
 	
 	this.FetchStyleMeta = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "STYLE", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "STYLE", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.StyleMeta = ResponseObject;
 			FactoryObj.FetchDataMeta();
@@ -49,7 +49,7 @@ var RapidCrud = function(){
 	};
 	
 	this.FetchDataMeta = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "DATA", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "DATA", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.DataMeta = ResponseObject;
 			FactoryObj.FetchDeviceMeta();
@@ -57,7 +57,7 @@ var RapidCrud = function(){
 	};
 	
 	this.FetchDeviceMeta = function() {
-		RequestObject = new CreateRequestObject("META", "GET", "DEVICE", "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", "DEVICE", "NO", 0, 0, [], [], [], []);
 		Communicator(function(){
 			FactoryObj.DiviceMeta = ResponseObject;
 			FactoryObj.DisplayMainTab();
@@ -90,7 +90,7 @@ var RapidCrud = function(){
 	
 	this.MainTabItemClickHandler = function(liElm) {	
 		if(liElm.index() == 0) {
-			RequestObject = new CreateRequestObject("FACTORY", "GET", "APP_LIST", "NO", 0, 0, "", "", [], [], [], []);
+			RequestObject = new CreateRequestObject("FACTORY", "GET", "APP_LIST", "NO", 0, 0, [], [], [], []);
 			Communicator(function(){
 				FactoryGridObj.SetDataSource(ResponseObject);
 				FactoryGridObj.InitGrid($("#"+liElm.attr("metaname")+"-context-list-parent"));
@@ -119,7 +119,7 @@ var RapidCrud = function(){
 	};
 	
 	this.GetTabChildMetaData = function(maintab) {
-		RequestObject = new CreateRequestObject("META", "GET", maintab, "NO", 0, 0, "", "", [], [], [], []);
+		RequestObject = new CreateRequestObject("META", "GET", maintab, "NO", 0, 0, [], [], [], []);
 		Communicator("_TabContentCallBack");
 	};
 	

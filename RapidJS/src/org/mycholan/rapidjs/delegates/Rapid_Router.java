@@ -53,3 +53,15 @@ public class Rapid_Router {
 		return responseStr;
 	}
 }
+etRequestModel().getAction().equals("DELETE")) {
+
+			} else if (rContext.getRequestModel().getAction().equals("GET")) {
+
+			} else if (rContext.getRequestModel().getAction().equals("CHECK")) {
+
+			}
+		}
+
+		return responseStr;
+	}
+}

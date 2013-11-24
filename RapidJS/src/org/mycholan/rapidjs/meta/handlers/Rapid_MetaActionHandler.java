@@ -12,7 +12,6 @@ public class Rapid_MetaActionHandler {
 	
 	public String doMetaAction() {
 		Rapid_MetaDataAccessObject metaHandler = new Rapid_MetaDataAccessObject(rContext);	
-		System.out.println("ActionRouter, Rapid_MetaAction handler");
 		return metaHandler.doGetMetaData();
 	}
 }

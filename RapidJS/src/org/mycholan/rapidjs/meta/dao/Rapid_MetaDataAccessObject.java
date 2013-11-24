@@ -1,6 +1,7 @@
 package org.mycholan.rapidjs.meta.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import net.sf.json.JSONArray;
 
@@ -28,22 +29,19 @@ public class Rapid_MetaDataAccessObject {
 			jArray = JSONArray.fromObject(FactoryMetaObj.getFactoryTab());
 		}else if(rContext.getRequestModel().getTable().equals("SUBTAB")) {
 			/*return meta tab which will be used to create sub tabs*/
-			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
-		}else if(rContext.getRequestModel().getTable().equals("ELEMENT")) {
-			/*return meta tab which will be used to create sub tabs*/			
-			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());		
 		}else if(rContext.getRequestModel().getTable().equals("ACTION")) {
 			/*return meta tab which will be used to create sub tabs*/
-			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+			jArray = JSONArray.fromObject(getSubTabPanelMeta("", rContext.getRequestModel().getTable()));
 		}else if(rContext.getRequestModel().getTable().equals("STYLE")) {
 			/*return meta tab which will be used to create sub tabs*/
-			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+			jArray = JSONArray.fromObject(getSubTabPanelMeta("", rContext.getRequestModel().getTable()));
 		}else if(rContext.getRequestModel().getTable().equals("DATA")) {
 			/*return meta tab which will be used to create sub tabs*/
-			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+			jArray = JSONArray.fromObject(getSubTabPanelMeta("", rContext.getRequestModel().getTable()));
 		}else if(rContext.getRequestModel().getTable().equals("DEVICE")) {
 			/*return meta tab which will be used to create sub tabs*/
-			jArray = JSONArray.fromObject(FactoryMetaObj.getFactorySubTab());
+			jArray = JSONArray.fromObject(getSubTabPanelMeta("", rContext.getRequestModel().getTable()));
 		}else{
 			/*return column list of particular table */
 			for(int i = 0; i < AppMetaData.getAppMetaData().size(); i++) {
@@ -61,16 +59,20 @@ public class Rapid_MetaDataAccessObject {
 	}
 	
 	private String getSubTabPanelMeta(String table, String subtab) {
-		ArrayList<Rapid_RowValueModel> rowList = null;
-		
-		if() {
-			
-		}
+		ArrayList<ArrayList<String>> rowList = new ArrayList<ArrayList<String>>();
 		for(int i = 0; i < FactoryMetaObj.getFactoryInitValue().size(); i++) {
-			if(FactoryMetaObj.getFactoryInitValue().get(i).getTableName().toLowerCase().equals(rContext.getRequestModel().getTable().toLowerCase())) {
-				rowList = FactoryMetaObj.getFactoryInitValue().get(i).getTableValue();
+			if(FactoryMetaObj.getFactoryInitValue().get(i).getTableName().equals("FACTORY_META_CONTROL")) {
+				for(int j = 0; j < FactoryMetaObj.getFactoryInitValue().get(i).getTableValue().size(); j++) {
+					for(int k = 0; k < FactoryMetaObj.getFactoryInitValue().get(i).getTableValue().get(j).getTvalue().size(); k++) {
+						if(FactoryMetaObj.getFactoryInitValue().get(i).getTableValue().get(j).getTvalue().get(k).toLowerCase().equals("rj_"+rContext.getRequestModel().getTable().toLowerCase())) {
+							rowList.add(FactoryMetaObj.getFactoryInitValue().get(i).getTableValue().get(j).getTvalue());
+							break;
+						}
+					}					
+				}
 			}
 		}
-		return "";
+		jArray = JSONArray.fromObject(rowList);
+		return jArray.toString();
 	}
 }

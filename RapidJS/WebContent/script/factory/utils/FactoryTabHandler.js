@@ -58,7 +58,6 @@ var FactoryTabHandler = function() {
 	this.CurrentSubTab = null;
 	
 	this.InitMainTabBar = function(MainTabObj, TabDiv) {
-		var tabPanel = null;
 		var ulElem = $("<ul class='rapidjs-factory-tabs-nav rapidjs-factory-reset rapidjs-factory-clearfix rapidjs-factory-widget rapidjs-factory-widget-header'></ul>");		
 		var liElem = null;
 		
@@ -80,20 +79,13 @@ var FactoryTabHandler = function() {
 					}					
 				});				
 				$("#"+$(this).attr("metaname")+"-tab-panel-div").show();
-				$("#"+$(this).attr("metaname")+"-context-subtab-parent").show();
 				
 				e.data.CurrentMainTab = $(this).attr("metaname");
 				FactoryObj.MainTabItemClickHandler($(this));				
 			});
 			
 			/*Main tab item's panel div*/
-			tabPanel = $('<div id="'+MainTabObj[i]+'-tab-panel-div" class=""></div>');
-			/*Context list container (app list, datasource list ..etc)*/			
-			tabPanel.append($('<div id="'+MainTabObj[i]+'-context-list-parent" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
-			/*Context sub tab container (element, data, action , css ..etc)*/
-			tabPanel.append($('<div id="'+MainTabObj[i]+'-context-subtab-parent" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
-			
-			TabDiv.append(tabPanel);
+			TabDiv.append($('<div id="'+MainTabObj[i]+'-tab-panel-div" class="rapidjs-factory-tabs-panel rapidjs-factory-widget-content"></div>'));
 		}	
 	};
 	

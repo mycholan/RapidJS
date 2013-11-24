@@ -60,7 +60,7 @@ public class Rapid_Docker extends HttpServlet {
           String requestStr = request.getParameter("DATA");
 
           if (requestStr != null && requestStr.equals("") && requestStr.equals(" ")) {
-               writerR.println("{\"status\":\"Parameter Missing\", \"info\":\"expected parameter is DATA\"}");
+               writerR.println("{\"status\":\"Parameter Missing\", \"info\":\"expected parameter DATA\"}");
                return;
           }
 
@@ -69,4 +69,6 @@ public class Rapid_Docker extends HttpServlet {
           RR = new Rapid_Router(RC);         
           writerR.println(RR.ActionRouter());
      }
+}
+
 }

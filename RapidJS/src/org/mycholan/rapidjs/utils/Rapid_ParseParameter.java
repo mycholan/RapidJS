@@ -1,8 +1,13 @@
 package org.mycholan.rapidjs.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.mycholan.rapidjs.constants.RapidConstants;
+import org.mycholan.rapidjs.constants.RapidJS;
 import org.mycholan.rapidjs.model.Rapid_ParamModel;
 
 /**
@@ -14,10 +19,8 @@ import org.mycholan.rapidjs.model.Rapid_ParamModel;
 public class Rapid_ParseParameter {
      String PARAM = null;
      JSONObject jObj = null;
-     JSONArray jDownload = null;
-     JSONArray jDownloadKey = null;
-     JSONArray jUpload = null;
-     JSONArray jUploadKey = null;
+     JSONArray jColumnKey = null;
+     JSONArray jSelectors = null;     
 
      public Rapid_ParseParameter(String parameter) {
           PARAM = parameter;
@@ -27,24 +30,31 @@ public class Rapid_ParseParameter {
           Rapid_ParamModel RPM = new Rapid_ParamModel();
           try {
                jObj = new JSONObject(PARAM);
+              
+               jColumnKey = jObj.getJSONArray(RapidJS.TRANSPORT_PARAM.PROJECTIONS);
+               jSelectors = jObj.getJSONArray(RapidJS.TRANSPORT_PARAM.SELECTORS);    
 
-               jDownloadKey = jObj.getJSONArray("DOWNLOAD_KEY");
-               jDownload = jObj.getJSONArray("DOWNLOAD_VALUE");
-               jUploadKey = jObj.getJSONArray("UPLOAD_KEY");
-               jUpload = jObj.getJSONArray("UPLOAD_VALUE");
-
-               RPM.setRjType(jObj.getString("TARGET_TYPE"));
-               RPM.setAction(jObj.getString("ACTION"));
-               RPM.setTable(jObj.getString("TABLE"));
-               RPM.setUser(jObj.getString("USER"));
-               RPM.setWhereKey(jObj.getString("WHERE_KEY"));
-               RPM.setWhereValue(jObj.getString("WHERE_VALUE"));
+               RPM.setTarget(jObj.getString(RapidJS.TRANSPORT_PARAM.TARGET));
+               RPM.setTable(jObj.getString(RapidJS.TRANSPORT_PARAM.TABEL));
+               RPM.setAction(jObj.getString(RapidJS.TRANSPORT_PARAM.ACTION));               
+               RPM.setUser(jObj.getString(RapidJS.TRANSPORT_PARAM.USER));
+             
+               List<String> list = new ArrayList<String>();
+               for (int i=0; i<jColumnKey.length(); i++) {
+                   list.add( jColumnKey.getString(i) );
+               }
+               RPM.setProjection(list.toArray(new String[list.size()]));
+               
+               RPM.setSelectorType(RapidJS.TRANSPORT_PARAM.SELECTOR_TYPE);
+               
+               	
+               RPM.setWhereKey(jArrayToStringArray(jWhereKey));
+               RPM.setWhereValue(jArrayToStringArray(jWhereValue));
+               RPM.setColumnKey(jArrayToStringArray(jColumnKey));
+               RPM.setColumnValue(jObj.getString("COLUMN_VALUE"));
                RPM.setStartIndex(jObj.getInt("START_INDEX"));
-               RPM.setEndIndex(jObj.getInt("END_INDEX"));
-               RPM.setDownloadKey(jArrayToStringArray(jDownloadKey));
-               RPM.setDownloadValue(jArrayToStringArray(jDownloadKey));
-               RPM.setUploadKey(jArrayToStringArray(jUploadKey));
-               RPM.setUploadValue(jArrayToStringArray(jUpload));
+               RPM.setEndIndex(jObj.getInt("RESULT_COUNT"));
+               
 
           } catch (JSONException e) {
                e.printStackTrace();
