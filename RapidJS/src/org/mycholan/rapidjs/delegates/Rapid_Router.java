@@ -24,7 +24,7 @@ public class Rapid_Router {
 	public String ActionRouter() {
 		String responseStr = "";
 		
-		if (rContext.getRequestModel().getRjType().equals("RJS")) {
+		if (rContext.getRequestModel().getTarget().equals("RJS")) {
 			Rapid_StarterApp starterApp = new Rapid_StarterApp(rContext);
 			Rapid_CredentialManager credentialManager = new Rapid_CredentialManager(rContext);
 
@@ -35,31 +35,19 @@ public class Rapid_Router {
 			} else if (rContext.getRequestModel().getAction().equals("LOGOUT")) {
 				responseStr = credentialManager.doLogout();
 			}
-		} else if (rContext.getRequestModel().getRjType().equals("META")) {
+		} else if (rContext.getRequestModel().getTarget().equals("META")) {
 			Rapid_MetaActionHandler metaAction = new Rapid_MetaActionHandler(rContext);
 			if (rContext.getRequestModel().getAction().equals("GET")) {				
 				responseStr = metaAction.doMetaAction();
 			} else if (rContext.getRequestModel().getAction().equals("CHECK")) {
 
 			}
-		} else if (rContext.getRequestModel().getRjType().equals("FACTORY")) {
+		} else if (rContext.getRequestModel().getTarget().equals("FACTORY")) {
 			Rapid_FactoryActionHandler factoryActionHandler = new Rapid_FactoryActionHandler(rContext);
 			responseStr = factoryActionHandler.doAction();
-		} else if (rContext.getRequestModel().getRjType().equals("APP")) {
+		} else if (rContext.getRequestModel().getTarget().equals("APP")) {
 			Rapid_ApplicationActionHandler appActionHandler = new Rapid_ApplicationActionHandler(rContext);
 			responseStr = appActionHandler.doAction();
-		}
-
-		return responseStr;
-	}
-}
-etRequestModel().getAction().equals("DELETE")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("GET")) {
-
-			} else if (rContext.getRequestModel().getAction().equals("CHECK")) {
-
-			}
 		}
 
 		return responseStr;

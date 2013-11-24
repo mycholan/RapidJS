@@ -98,39 +98,3 @@ public class Rapid_ParamModel {
 		Data = data;
 	}	
 }
- uploadValue) {
-		UploadValue = uploadValue;
-	}
-
-	public String[] getDownloadKey() {
-		return DownloadKey;
-	}
-
-	public void setDownloadKey(String[] downloadKey) {
-		DownloadKey = downloadKey;
-	}
-
-	public String[] getDownloadValue() {
-		return DownloadValue;
-	}
-
-	public void setDownloadValue(String[] downloadValue) {
-		DownloadValue = downloadValue;
-	}
-
-	public int getStartIndex() {
-		return StartIndex;
-	}
-
-	public void setStartIndex(int startIndex) {
-		StartIndex = startIndex;
-	}
-
-	public int getEndIndex() {
-		return EndIndex;
-	}
-
-	public void setEndIndex(int endIndex) {
-		EndIndex = endIndex;
-	}     
-}

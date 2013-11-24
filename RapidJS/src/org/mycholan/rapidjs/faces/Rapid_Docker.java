@@ -70,5 +70,3 @@ public class Rapid_Docker extends HttpServlet {
           writerR.println(RR.ActionRouter());
      }
 }
-
-}
