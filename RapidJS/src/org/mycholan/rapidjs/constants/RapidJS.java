@@ -7,11 +7,16 @@ public final class RapidJS {
         public static final String TABEL = "Tabel";
         public static final String USER = "User";
         public static final String PROJECTIONS = "Projection";
-        public static final String SELECTORS = "Selector";
+        public static final String SELECTOR_KEYS = "SelectorKeys";
+        public static final String SELECTOR_VALUES = "SelectorValues";
         public static final String SELECTOR_TYPE = "SelectorType";
-        public static final String ORDER_BY = "OrderBy";
-        public static final String GROUP_BY = "GroupBy";
-        public static final String HAVING = "Having";
+        public static final String ORDER_BY_PROJECTION = "OrderByProjection";
+        public static final String ORDER_BY_TYPE = "OrderByType";
+        public static final String OPERATOR = "Operator";
+        public static final String RANGE = "Range";
+        public static final String CONTAINS = "Contains";        
+        public static final String PAGE = "Page";
+        public static final String COUNT = "Count";
         public static final String DATA = "Data";
     }
 	
